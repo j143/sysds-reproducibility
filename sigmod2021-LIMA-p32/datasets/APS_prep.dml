@@ -27,11 +27,11 @@ readNdClean = function(Boolean train=TRUE) return(Matrix[Double] X, Matrix[Doubl
     mask = (y == 2);
     Xmask = X * mask;
     minority = removeEmpty(target=Xmask, margin="rows");
-    Xtmp = smote(X=minority, s=1000);
+    # Xtmp = smote(X=minority, s=1000);
     # NOTE: smote's signature has changed in SystemDS 2.1, 2.2
     # Comment the above call and enable the below lines
-    # typemask = matrix(0, rows=1, cols=ncol(minority));
-    # Xtmp = smote(X=minority, mask=typemask, s=1000);
+     typemask = matrix(0, rows=1, cols=ncol(minority));
+     Xtmp = smote(X=minority, mask=typemask, s=1000);
     X = rbind(X, Xtmp);
     y = rbind(y, matrix(2, rows=10000, cols=1));
   }

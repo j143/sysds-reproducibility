@@ -8,7 +8,7 @@ git clone https://github.com/apache/systemds.git
 
 # Create branch from the commit that includes all paper codes
 cd systemds
-git checkout -b reproducibility aa09b5c3d3b5d221426fd06871b6690e1297ee9e
+git checkout -b reproducibility main
 
 # Build the source
 mvn clean package -P distribution
@@ -35,13 +35,13 @@ cd ..
 # We call gc after each instruction in this special build.
 # Code changes are available in: https://github.com/phaniarnab/systemds/tree/reproducibility
 # NOTE: this build is used only for experiment 6b
-mkdir tmp
-cd tmp
-git clone https://github.com/phaniarnab/systemds.git
-cd systemds
-git checkout reproducibility #set remote branch reproduciblity
-mvn clean package -P distribution
-cd ../..
-mv tmp/systemds/target/SystemDS.jar ./SystemDS_mem.jar
-rm -rf tmp  #no need to keep this build
+#mkdir tmp
+#cd tmp
+#git clone https://github.com/phaniarnab/systemds.git
+#cd systemds
+#git checkout reproducibility #set remote branch reproduciblity
+#mvn clean package -P distribution
+#cd ../..
+#mv tmp/systemds/target/SystemDS.jar ./SystemDS_mem.jar
+#rm -rf tmp  #no need to keep this build
 
